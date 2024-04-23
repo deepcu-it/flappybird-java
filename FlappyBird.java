@@ -97,9 +97,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 	}
     
     void placePipes() {
-        //(0-1) * pipeHeight/2.
-        // 0 -> -128 (pipeHeight/4)
-        // 1 -> -128 - 256 (pipeHeight/4 - pipeHeight/2) = -3/4 pipeHeight
+        
         int randomPipeY = (int) (pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2));
         int openingSpace = boardHeight/4;
     
@@ -171,10 +169,8 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     }
 
     boolean collision(Bird a, Pipe b) {
-        return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
-               a.x + a.width > b.x &&   //a's top right corner passes b's top left corner
-               a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
-               a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+        return a.x < b.x + b.width &&    a.x + a.width > b.x &&   
+               a.y < b.y + b.height &&   a.y + a.height > b.y;    
     }
 
     @Override
